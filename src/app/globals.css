@@ -5,13 +5,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --ios-blue: rgb(10, 132, 255);
+  --ios-blue-2: rgb(0, 64, 221);
+  --ios-gray: rgb(28, 28, 30);
+  --ios-gray-2: rgb(142, 142, 147);
+  --ios-gray-3: rgb(44, 44, 46);
 }
 
 body {
