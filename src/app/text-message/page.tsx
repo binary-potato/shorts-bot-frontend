@@ -1,11 +1,7 @@
-import ChatContainer from "@/components/chat-container";
+import PageContainer from "@/components/text-message-page-container";
 
 function Page() {
-  return (
-    <div>
-      <ChatContainer />
-    </div>
-  );
+  return <PageContainer />;
 }
 
 export default Page;
