@@ -1,4 +1,3 @@
-- Add vine boom sound effect (and others) depending on type of message
 - Add background track
     - Add option to select track mood (goofy, serious, etc)
 - Randomise background video (w/longer clips)

@@ -9,4 +9,5 @@ type TextMessage = {
   speaker: string;
   start: number;
   end: number;
+  s3URL: string;
 };

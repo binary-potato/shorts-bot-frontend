@@ -9,10 +9,14 @@ function PageContainer() {
   const [audioURL, setAudioURL] = useState("");
   const [start, setStart] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (start) {
       videoRef.current?.play();
+      const audio = new Audio("/assets/standard.mp3");
+      audio.volume = 0.2;
+      audio.play();
     }
   }, [start]);
   return (
@@ -25,6 +29,7 @@ function PageContainer() {
         />
         {audioURL && (
           <audio
+            ref={audioRef}
             src={audioURL}
             controls
             autoPlay

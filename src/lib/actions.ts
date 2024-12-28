@@ -1,6 +1,189 @@
 "use server";
 
 const BACKEND_BASE_URL = "http://localhost:8080";
+const TEST_DATA = {
+  s3URL:
+    "https://podcastsb.s3.amazonaws.com/generated-audio/generated-audio/text-conversation-66ee4267-5cae-4892-b4c7-df4e5bcea4ab.mp3",
+  fullTranscription: [
+    {
+      text: " So you helped your girlfriend with a presentation and found out she thinks you're out of her league?",
+      start: 0,
+      end: 4.159999847412109,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-0.mp3",
+    },
+    {
+      text: " Yeah, I stumbled on a chat with her sister.",
+      start: 0,
+      end: 2.0399999618530273,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-1.mp3",
+    },
+    {
+      text: " Let's just say my ego took a nosedive.",
+      start: 2.0399999618530273,
+      end: 4.199999809265137,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-1.mp3",
+    },
+    {
+      text: " Ouch! What else did the sister say? She better not be dissing your fine culinary skills.",
+      start: 0,
+      end: 5.28000020980835,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-2.mp3",
+    },
+    {
+      text: " She called me unambitious, said I eat like crap, and",
+      start: 0,
+      end: 3.1600000858306885,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-3.mp3",
+    },
+    {
+      text: " wouldn't want kids with me, what?",
+      start: 3.1600000858306885,
+      end: 5.360000133514404,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-3.mp3",
+    },
+    {
+      text: " Rude.",
+      start: 0,
+      end: 1,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-4.mp3",
+    },
+    {
+      text: " But wait, isn't that just her inner drama queen talking?",
+      start: 1,
+      end: 3.5,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-4.mp3",
+    },
+    {
+      text: " Right? And I'm keeping her happy. She even prefers 12-hour flights to visit a guy friend",
+      start: 0,
+      end: 5.679999828338623,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-5.mp3",
+    },
+    {
+      text: " instead of a quick hour to see me.",
+      start: 5.679999828338623,
+      end: 7.599999904632568,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-5.mp3",
+    },
+    {
+      text: " So she'll fly across the country but won't travel an hour to get some quality time.",
+      start: 0,
+      end: 4.440000057220459,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-6.mp3",
+    },
+    {
+      text: " Sounds like she's on a one-way flight to La La Land.",
+      start: 4.440000057220459,
+      end: 7.079999923706055,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-6.mp3",
+    },
+    {
+      text: " Exactly! And she thinks I won't make enough money? I mean, I'll make decent cash as a doctor.",
+      start: 0,
+      end: 5.28000020980835,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-7.mp3",
+    },
+    {
+      text: " Sounds like she's got some serious league issues.",
+      start: 0,
+      end: 2.640000104904175,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-8.mp3",
+    },
+    {
+      text: " Dude, this is a sign. Time to break up.",
+      start: 2.640000104904175,
+      end: 4.960000038146973,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-8.mp3",
+    },
+    {
+      text: " You think? I'm worried I'm overlooking things.",
+      start: 0,
+      end: 3.200000047683716,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-9.mp3",
+    },
+    {
+      text: " Look, would you want that kind of teammate in life?",
+      start: 0,
+      end: 3.2799999713897705,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+    },
+    {
+      text: " Nope!",
+      start: 3.2799999713897705,
+      end: 4.28000020980835,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+    },
+    {
+      text: " Time to score a better match!",
+      start: 4.28000020980835,
+      end: 5.28000020980835,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+    },
+    {
+      text: " Alright, I'm convinced. It's a foul play on her side.",
+      start: 0,
+      end: 3,
+      speaker: "Dude",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-11.mp3",
+    },
+    {
+      text: " Game on. Don't let anyone make you feel less than a champ.",
+      start: 0,
+      end: 3.2799999713897705,
+      speaker: "Buddy",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-12.mp3",
+    },
+    {
+      text: " Subscribe for more funny chats.",
+      start: 0,
+      end: 2,
+      speaker: "Narrator",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-13.mp3",
+    },
+  ],
+};
+const IS_TESTING = true;
 
 export const generateConversation = async (
   prevState: FormState,
@@ -9,157 +192,35 @@ export const generateConversation = async (
   const { text } = Object.fromEntries(formData.entries());
 
   try {
-    // const response = await fetch(
-    //   `${BACKEND_BASE_URL}/generate-text-conversation-and-audio`,
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify({ text }),
-    //     headers: { "Content-Type": "application/json" },
-    //   }
-    // );
+    if (!IS_TESTING) {
+      const response = await fetch(
+        `${BACKEND_BASE_URL}/generate-text-conversation-and-audio`,
+        {
+          method: "POST",
+          body: JSON.stringify({ text }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    // if (!response.ok) {
-    //   const error = await response.text();
-    //   throw new Error(error || "Something went wrong");
-    // }
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || "Something went wrong");
+      }
 
-    // const { message, s3URL, fullTranscription } = await response.json();
+      const { message, s3URL, fullTranscription } = await response.json();
 
-    // return {
-    //   message,
-    //   data: { s3URL, fullTranscription },
-    //   error: "",
-    // };
-    return {
-      message: "Success",
-      data: {
-        s3URL:
-          "https://podcastsb.s3.amazonaws.com/generated-audio/generated-audio/text-conversation-e6878bda-cac2-4e22-8f95-87c297f8bcb4.mp3",
-        fullTranscription: [
-          {
-            text: " So, how's the volunteer thing going? Ready to wear that president crown?",
-            start: 0,
-            end: 4,
-            speaker: "Sam",
-          },
-          {
-            text: " You won't believe what just happened. I ran for president and lost by one vote.",
-            start: 0,
-            end: 4.639999866485596,
-            speaker: "Alex",
-          },
-          {
-            text: " Wait, one vote? That's like losing a game of rock-paper-scissors to a rock. What happened?",
-            start: 0,
-            end: 6.239999771118164,
-            speaker: "Sam",
-          },
-          {
-            text: " Some newbie named Alex decided to crash the party last minute.",
-            start: 0,
-            end: 3.4800000190734863,
-            speaker: "Alex",
-          },
-          {
-            text: " Who even does that?",
-            start: 3.4800000190734863,
-            end: 4.440000057220459,
-            speaker: "Alex",
-          },
-          {
-            text: " Sounds like an episode of Survivor the Volunteer Edition.",
-            start: 0,
-            end: 3.759999990463257,
-            speaker: "Sam",
-          },
-          {
-            text: " What a twist.",
-            start: 3.759999990463257,
-            end: 4.559999942779541,
-            speaker: "Sam",
-          },
-          {
-            text: " Right?",
-            start: 0,
-            end: 1,
-            speaker: "Alex",
-          },
-          {
-            text: " And then the election got even crazier.",
-            start: 1,
-            end: 2.880000114440918,
-            speaker: "Alex",
-          },
-          {
-            text: " Turns out 9 votes for me didn't get counted due to a computer glitch.",
-            start: 2.880000114440918,
-            end: 6.320000171661377,
-            speaker: "Alex",
-          },
-          {
-            text: " I technically won.",
-            start: 6.320000171661377,
-            end: 7.159999847412109,
-            speaker: "Alex",
-          },
-          {
-            text: " Oof, so you're now the ghost president nobody knows about?",
-            start: 0,
-            end: 3.359999895095825,
-            speaker: "Sam",
-          },
-          {
-            text: " Exactly! But instead of celebrating my non-presidency, they want me to step down to guide these newbies.",
-            start: 0,
-            end: 6.320000171661377,
-            speaker: "Alex",
-          },
-          {
-            text: " Like, excuse me? I put in the work, not my fault they're clueless.",
-            start: 6.320000171661377,
-            end: 9.760000228881836,
-            speaker: "Alex",
-          },
-          {
-            text: " So what's the plan? Become a volunteer ninja and vanish into thin air?",
-            start: 0,
-            end: 4.320000171661377,
-            speaker: "Sam",
-          },
-          {
-            text: " Pretty much. I'm dropping all leadership roles. They can either sink or swim without me.",
-            start: 0,
-            end: 4.800000190734863,
-            speaker: "Alex",
-          },
-          {
-            text: " I love it. Let them learn the hard way, like a crash course in leadership, literally.",
-            start: 0,
-            end: 4.800000190734863,
-            speaker: "Sam",
-          },
-          {
-            text: " Totally. And when they come crying for help, I'll be like,",
-            start: 0,
-            end: 2.799999952316284,
-            speaker: "Alex",
-          },
-          {
-            text: " my title is former president, not miracle worker.",
-            start: 2.799999952316284,
-            end: 5.599999904632568,
-            speaker: "Alex",
-          },
-          {
-            text: " Subscribe for more funny chats",
-            start: 0,
-            end: 2,
-            speaker: "Narrator",
-          },
-        ],
-      },
-      error: "",
-    };
+      return {
+        message,
+        data: { s3URL, fullTranscription },
+        error: "",
+      };
+    } else {
+      return {
+        message: "Successfully generated text conversation",
+        data: TEST_DATA,
+        error: "",
+      };
+    }
   } catch (error) {
     console.error(error);
     return {

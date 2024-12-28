@@ -4,7 +4,7 @@ import { getSecondSpeaker } from "@/lib/utils";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { BiSignal4 } from "react-icons/bi";
-import { FaBatteryEmpty, FaBatteryQuarter, FaYoutube } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import {
   GoChevronLeft,
   GoChevronRight,
@@ -26,36 +26,43 @@ function ChatContainer({
   useEffect(() => {
     if (transcription.length && start) {
       let cumulativeDelay = 0;
+      const timers: NodeJS.Timeout[] = [];
 
-      transcription.forEach((chat) => {
-        const delay = Math.floor((chat.end - chat.start) * 1000);
+      transcription.forEach((chat, index) => {
+        // Check if the previous message had the same speaker
+        const previousChat = transcription[index - 1];
+        const isSameSpeaker =
+          previousChat && previousChat.speaker === chat.speaker;
 
-        // Set timeout for the current transcription entry
+        // Adjust delay based on whether the speaker changes
+        const delay = isSameSpeaker
+          ? (chat.end - chat.start - 0.1) * 1000
+          : (chat.end - chat.start) * 1000;
+
         const timer = setTimeout(() => {
           setLocalTranscription((prev) => {
-            if (prev.length === 0) {
-              const audio = new Audio("/assets/sentmessage_1.mp3");
-              audio.play();
-            } else if (prev.length === transcription.length - 1) {
-              const audio = new Audio("/assets/notification.mp3");
-              audio.play();
+            // Play notification sounds only at the start or end
+            if (index === 0) {
+              new Audio("/assets/sentmessage_1.mp3").play();
+            } else if (index === transcription.length - 1) {
+              new Audio("/assets/notification.mp3").play();
             }
             return [...prev, chat];
           });
         }, cumulativeDelay);
 
-        // Update the cumulative delay for the next entry
+        timers.push(timer);
         cumulativeDelay += delay;
-
-        // Clear timer on cleanup
-        return () => clearTimeout(timer);
       });
+
+      // Cleanup timers on unmount or re-render
+      return () => timers.forEach(clearTimeout);
     }
   }, [transcription, start]);
 
   // Scroll to bottom whenever localTranscription changes
   useEffect(() => {
-    if (chatContainerRef.current) {
+    if (localTranscription.length && chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
@@ -67,7 +74,7 @@ function ChatContainer({
         <div className="text-white flex justify-between items-end">
           <span className="text-sm mb-[-3px] font-semibold">16:20</span>
           <div className="flex gap-[2px] items-end">
-            <BiSignal4 size="1.2rem"/>
+            <BiSignal4 size="1.2rem" />
             <span className="mb-[-3px] text-sm mr-[4px] font-medium">7G</span>
             <img src="/assets/battery.png" className="w-[30px] h-[15px]" />
           </div>
