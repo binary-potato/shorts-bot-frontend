@@ -21,20 +21,54 @@ function PageContainer() {
   }, [start]);
   return (
     <div className="grid grid-cols-2 h-screen">
-      <div>
+      <div className="p-4 overflow-y-auto">
+        <h1 className="text-2xl font-semibold text-center mb-4">
+          Create Text Story Short
+        </h1>
         <GenerateConversationForm
           setTranscription={setTranscription}
           setStart={setStart}
           setAudioURL={setAudioURL}
         />
         {audioURL && (
-          <audio
-            ref={audioRef}
-            src={audioURL}
-            controls
-            autoPlay
-            onPlay={() => setStart(true)}
-          />
+          <div className="mt-6">
+            <h2 className="text-xl font-semibold">Audio</h2>
+            <audio
+              ref={audioRef}
+              src={audioURL}
+              controls
+              onPause={(e) => {
+                e.preventDefault(); // Prevent default pause behavior
+                if (audioRef.current) {
+                  audioRef.current.play(); // Resume playback
+                }
+              }}
+              onPlay={() => setStart(true)}
+              onEnded={() => setStart(false)}
+            />
+          </div>
+        )}
+        {transcription.length > 0 && (
+          <div className="mt-4">
+            <h2 className="text-xl font-semibold">Transcription</h2>
+            <ul className="text-sm flex flex-col gap-1">
+              {transcription.map((element, idx) => (
+                <li
+                  key={`${element}${idx}`}
+                  className="flex gap-2 items-center"
+                >
+                  <div>
+                    <span className="font-semibold">{element.speaker}</span>:
+                    <span>{element.text}</span>
+                  </div>
+
+                  <span className="text-xs text-gray-600">
+                    {Math.round(element.end - element.start)}s
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
       <div className="relative flex max-h-screen">

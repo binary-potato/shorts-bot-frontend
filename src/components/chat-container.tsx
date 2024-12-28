@@ -21,7 +21,7 @@ function ChatContainer({
   const [localTranscription, setLocalTranscription] = useState<TextMessage[]>(
     []
   );
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const chatsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (transcription.length && start) {
@@ -62,14 +62,14 @@ function ChatContainer({
 
   // Scroll to bottom whenever localTranscription changes
   useEffect(() => {
-    if (localTranscription.length && chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+    if (localTranscription.length && chatsRef.current) {
+      chatsRef.current.scrollTop =
+      chatsRef.current.scrollHeight;
     }
   }, [localTranscription]);
 
   return (
-    <div className="bg-black/90 h-fit max-h-[50%] w-[60%] m-auto rounded-2xl flex flex-col shadow-[5px_5px_5px_rgba(0,0,0,.5)]">
+    <div className="bg-black/90 h-fit max-h-[50%] w-[60%] max-w-[400px] m-auto rounded-2xl flex flex-col shadow-[5px_5px_5px_rgba(0,0,0,.5)]">
       <div className="bg-[var(--ios-gray)] p-2 rounded-2xl rounded-bl-none rounded-br-none  border-b border-b-[var(--ios-gray-3)]">
         <div className="text-white flex justify-between items-end">
           <span className="text-sm mb-[-3px] font-semibold">16:20</span>
@@ -93,7 +93,7 @@ function ChatContainer({
           <GoDeviceCameraVideo size="2rem" color="var(--ios-blue)" />
         </div>
       </div>
-      <div className="p-2 max-h-[90%] overflow-y-auto" ref={chatContainerRef}>
+      <div className="p-2 max-h-[90%] overflow-y-auto" ref={chatsRef}>
         {localTranscription.length <= 0 && <span></span>}
         {localTranscription.map((chat, idx) => {
           // Determine speaker's style dynamically

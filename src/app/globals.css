@@ -21,3 +21,7 @@ body {
 textarea {
   resize: none;
 }
+
+a {
+  color:rgb(0, 115, 255)
+}

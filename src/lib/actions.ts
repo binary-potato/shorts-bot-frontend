@@ -1,7 +1,7 @@
 "use server";
 
 const BACKEND_BASE_URL = "http://localhost:8080";
-const TEST_DATA = {
+const CONVERSATION_TEST_DATA = {
   s3URL:
     "https://podcastsb.s3.amazonaws.com/generated-audio/generated-audio/text-conversation-66ee4267-5cae-4892-b4c7-df4e5bcea4ab.mp3",
   fullTranscription: [
@@ -183,7 +183,13 @@ const TEST_DATA = {
     },
   ],
 };
-const IS_TESTING = true;
+
+const REDDIT_STORY_TEST_DATA = {
+  message: "Successfully generated short",
+  url: "https://podcastsb.s3.amazonaws.com/generated-clips/dd656784-0474-47c7-ba2d-d6d78268b803.mp4",
+};
+
+const IS_TESTING = false;
 
 export const generateConversation = async (
   prevState: FormState,
@@ -217,7 +223,105 @@ export const generateConversation = async (
     } else {
       return {
         message: "Successfully generated text conversation",
-        data: TEST_DATA,
+        data: CONVERSATION_TEST_DATA,
+        error: "",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      error: "Something went wrong",
+      data: {},
+      message: "",
+    };
+  }
+};
+
+export const generateRedditStory = async (
+  prevState: FormState,
+  formData: FormData
+) => {
+  const { text, voiceId } = Object.fromEntries(formData.entries());
+
+  try {
+    if (!IS_TESTING) {
+      const response = await fetch(`${BACKEND_BASE_URL}/generate-short`, {
+        method: "POST",
+        body: JSON.stringify({
+          text,
+          voiceId,
+          bgVideo: "assets/background.mp4",
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || "Something went wrong");
+      }
+
+      const { message, url } = await response.json();
+
+      return {
+        message,
+        data: { url },
+        error: "",
+      };
+    } else {
+      console.log(text);
+      console.log(voiceId);
+      return {
+        message: "Successfully generated text conversation",
+        data: REDDIT_STORY_TEST_DATA,
+        error: "",
+      };
+    }
+  } catch (error) {
+    console.error(error);
+    return {
+      error: "Something went wrong",
+      data: {},
+      message: "",
+    };
+  }
+};
+
+export const generateConfession = async (
+  prevState: FormState,
+  formData: FormData
+) => {
+  const { text, voiceId } = Object.fromEntries(formData.entries());
+
+  try {
+    if (!IS_TESTING) {
+      const response = await fetch(`${BACKEND_BASE_URL}/generate-confession`, {
+        method: "POST",
+        body: JSON.stringify({
+          text,
+          voiceId,
+          bgVideo: "assets/background.mp4",
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || "Something went wrong");
+      }
+
+      const { message, url } = await response.json();
+
+      return {
+        message,
+        data: { url },
+        error: "",
+      };
+    } else {
+      console.log(text);
+      console.log(voiceId);
+      return {
+        message: "Successfully generated text conversation",
+        data: REDDIT_STORY_TEST_DATA,
         error: "",
       };
     }

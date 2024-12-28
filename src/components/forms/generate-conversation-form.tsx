@@ -28,11 +28,15 @@ function GenerateConversationForm({
   return (
     <form className="grid grid-cols-1 gap-4" action={action}>
       <div className="flex flex-col">
-        <label htmlFor="text">Text to be converted to conversation</label>
-        <textarea name="text" placeholder="Enter text" className="border" />
+        <textarea
+          name="text"
+          placeholder="Paste a post..."
+          className="border rounded-3xl px-4 py-2 min-h-[120px] text-sm"
+          required
+        />
       </div>
       <button
-        className="bg-black text-white w-fit"
+        className="bg-black text-white w-fit p-2 rounded-full"
         type="submit"
         disabled={pending}
         onClick={() => {
