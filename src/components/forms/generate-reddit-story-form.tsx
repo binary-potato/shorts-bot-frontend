@@ -45,7 +45,7 @@ function GenerateRedditStoryForm() {
           <option selected disabled value="">
             Select a voice
           </option>
-          {VOICES.map((voice) => {
+          {VOICES.map((voice, idx) => {
             let maleCount = 0,
               femaleCount = 0;
 
@@ -56,9 +56,7 @@ function GenerateRedditStoryForm() {
             }
             return (
               <option key={voice.id} value={voice.id}>
-                {voice.sex === "m"
-                  ? `Male ${maleCount}`
-                  : `Female ${femaleCount}`}
+                {voice.sex === "m" ? `Male ${idx}` : `Female ${idx}`}
               </option>
             );
           })}

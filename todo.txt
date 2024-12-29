@@ -1,7 +1,2 @@
-- Add background track
-    - Add option to select track mood (goofy, serious, etc)
-- Randomise background video (w/longer clips)
-- Improve prompts
 - Auto record video
 - Thumbnails
-- Fix timing mismatch

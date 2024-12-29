@@ -1,5 +1,7 @@
 "use server";
 
+import { getRandomBackgroundSong, getRandomBackgroundVideo } from "./utils";
+
 const BACKEND_BASE_URL = "http://localhost:8080";
 const CONVERSATION_TEST_DATA = {
   s3URL:
@@ -250,7 +252,8 @@ export const generateRedditStory = async (
         body: JSON.stringify({
           text,
           voiceId,
-          bgVideo: "assets/background.mp4",
+          bgVideo: getRandomBackgroundVideo(),
+          bgSound: getRandomBackgroundSong(),
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -299,8 +302,10 @@ export const generateConfession = async (
         body: JSON.stringify({
           text,
           voiceId,
-          bgVideo: "assets/background.mp4",
+          bgVideo: getRandomBackgroundVideo(),
+          bgSound: getRandomBackgroundSong(),
         }),
+
         headers: { "Content-Type": "application/json" },
       });
 
@@ -317,8 +322,6 @@ export const generateConfession = async (
         error: "",
       };
     } else {
-      console.log(text);
-      console.log(voiceId);
       return {
         message: "Successfully generated text conversation",
         data: REDDIT_STORY_TEST_DATA,

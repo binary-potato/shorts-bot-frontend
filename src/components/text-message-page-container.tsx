@@ -2,6 +2,7 @@
 
 import ChatContainer from "@/components/chat-container";
 import GenerateConversationForm from "@/components/forms/generate-conversation-form";
+import { getRandomBackgroundSong, getRandomBackgroundVideo } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
 function PageContainer() {
@@ -12,11 +13,14 @@ function PageContainer() {
   const audioRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    const audio = new Audio(getRandomBackgroundSong());
     if (start) {
       videoRef.current?.play();
-      const audio = new Audio("/assets/standard.mp3");
       audio.volume = 0.2;
       audio.play();
+    } else {
+      audio.pause();
+      videoRef.current?.pause();
     }
   }, [start]);
   return (
@@ -39,12 +43,15 @@ function PageContainer() {
               controls
               onPause={(e) => {
                 e.preventDefault(); // Prevent default pause behavior
-                if (audioRef.current) {
+                if (audioRef.current && !audioRef.current.ended) {
                   audioRef.current.play(); // Resume playback
                 }
               }}
               onPlay={() => setStart(true)}
-              onEnded={() => setStart(false)}
+              onEnded={() => {
+                console.log("ended");
+                setStart(false);
+              }}
             />
           </div>
         )}
@@ -78,7 +85,7 @@ function PageContainer() {
           muted
           className="absolute right-0 left-0 m-auto inset-0 w-full h-full object-cover z-[-1]"
         >
-          <source src="/assets/background.mp4" type="video/mp4" />
+          <source src={getRandomBackgroundVideo()} />
           Your browser does not support the video tag.
         </video>
         <ChatContainer transcription={transcription} start={start} />
