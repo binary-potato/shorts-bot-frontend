@@ -1,4 +1,4 @@
-const BG_COUNT = 10;
+const BG_COUNT = 12;
 const SONG_COUNT = 4;
 
 export const getSecondSpeaker = (conversation: any) => {
@@ -25,3 +25,11 @@ export const getRandomBackgroundSong = () => {
     Math.floor(Math.random() * (SONG_COUNT - 1 + 1)) + 1
   }.mp3`;
 };
+
+export const VOICES = [
+  { id: "7S3KNdLDL7aRgBVRQb1z", sex: "m" },
+  { id: "bIHbv24MWmeRgasZH58o", sex: "m" },
+  { id: "SAz9YHcvj6GT2YYXdXww", sex: "f" },
+  { id: "kPzsL2i3teMYv0FxEYQ6", sex: "f" },
+  { id: "ZF6FPAbjXT4488VcRRnw", sex: "f" },
+];

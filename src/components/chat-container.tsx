@@ -37,7 +37,7 @@ function ChatContainer({
         // Adjust delay based on whether the speaker changes
         const delay = isSameSpeaker
           ? (chat.end - chat.start - 0.1) * 1000
-          : (chat.end - chat.start) * 1000;
+          : (chat.end - chat.start - 0.2) * 1000;
 
         const timer = setTimeout(() => {
           setLocalTranscription((prev) => {
@@ -69,7 +69,7 @@ function ChatContainer({
   }, [localTranscription]);
 
   return (
-    <div className="bg-black/90 h-fit max-h-[50%] w-[60%] max-w-[400px] m-auto rounded-2xl flex flex-col shadow-[5px_5px_5px_rgba(0,0,0,.5)]">
+    <div className="bg-black/90 h-fit max-h-[50%] w-[80%] max-w-[400px] m-auto rounded-2xl flex flex-col shadow-[5px_5px_5px_rgba(0,0,0,.5)]">
       <div className="bg-[var(--ios-gray)] p-2 rounded-2xl rounded-bl-none rounded-br-none  border-b border-b-[var(--ios-gray-3)]">
         <div className="text-white flex justify-between items-end">
           <span className="text-sm mb-[-3px] font-semibold">16:20</span>

@@ -1,2 +1,7 @@
 - Auto record video
-- Thumbnails
+- Generate Thumbnails
+- Output title, description, and tags
+- Auto upload to YouTube
+- Scrape Reddit for posts
+- Add backdrop to subtitles
+- Fix timing mismatch for text stories

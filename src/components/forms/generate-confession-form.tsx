@@ -2,15 +2,10 @@
 
 import { generateConfession, generateRedditStory } from "@/lib/actions";
 import { EMPTY_FORM_STATE } from "@/lib/form-utils";
+import { VOICES } from "@/lib/utils";
 import { useActionState, useEffect, useState } from "react";
 
-const VOICES = [
-  { id: "7S3KNdLDL7aRgBVRQb1z", sex: "m" },
-  { id: "bIHbv24MWmeRgasZH58o", sex: "m" },
-  { id: "SAz9YHcvj6GT2YYXdXww", sex: "f" },
-  { id: "kPzsL2i3teMYv0FxEYQ6", sex: "f" },
-  { id: "ZF6FPAbjXT4488VcRRnw", sex: "f" },
-];
+
 
 function GenerateConfessionForm() {
   const [state, action, pending] = useActionState(
@@ -41,8 +36,9 @@ function GenerateConfessionForm() {
           className="w-fit border p-2 rounded-3xl text-sm"
           name="voiceId"
           required
+          defaultValue={""}
         >
-          <option selected disabled value="">
+          <option disabled value="">
             Select a voice
           </option>
           {VOICES.map((voice) => {
@@ -63,6 +59,19 @@ function GenerateConfessionForm() {
             );
           })}
         </select>
+      </div>
+      <div className="flex flex-col">
+        <label htmlFor="isVerbatim">Verbatim</label>
+        <div className="flex items-center gap-4 text-sm">
+          <span className="flex gap-1">
+            <input type="radio" name="isVerbatim" value={"t"} required/>
+            <span>Yes</span>
+          </span>
+          <span className="flex gap-1">
+            <input type="radio" name="isVerbatim" value={"f"} defaultChecked required/>
+            <span>No</span>
+          </span>
+        </div>
       </div>
       {!videoSrc && (
         <button

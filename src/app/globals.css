@@ -23,5 +23,15 @@ textarea {
 }
 
 a {
-  color:rgb(0, 115, 255)
+  color: rgb(0, 115, 255);
+}
+
+button {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+input[type="radio"] {
+  cursor: pointer;
 }

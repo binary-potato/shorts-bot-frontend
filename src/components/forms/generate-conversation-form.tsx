@@ -2,6 +2,7 @@
 
 import { generateConversation } from "@/lib/actions";
 import { EMPTY_FORM_STATE } from "@/lib/form-utils";
+import clsx from "clsx";
 import { Dispatch, SetStateAction, useActionState, useEffect } from "react";
 
 function GenerateConversationForm({
@@ -36,7 +37,15 @@ function GenerateConversationForm({
         />
       </div>
       <button
-        className="bg-black text-white w-fit p-2 rounded-full"
+        className={clsx(
+          "bg-black text-white w-fit p-2 rounded-full",
+          {
+            "bg-black": !pending,
+          },
+          {
+            "bg-gray-500": pending,
+          }
+        )}
         type="submit"
         disabled={pending}
         onClick={() => {

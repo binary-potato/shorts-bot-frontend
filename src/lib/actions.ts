@@ -5,193 +5,152 @@ import { getRandomBackgroundSong, getRandomBackgroundVideo } from "./utils";
 const BACKEND_BASE_URL = "http://localhost:8080";
 const CONVERSATION_TEST_DATA = {
   s3URL:
-    "https://podcastsb.s3.amazonaws.com/generated-audio/generated-audio/text-conversation-66ee4267-5cae-4892-b4c7-df4e5bcea4ab.mp3",
+    "https://podcastsb.s3.amazonaws.com/generated-audio/generated-audio/text-conversation-99e3b31f-2c26-4331-ad00-7a80a0b8b9b2.mp3",
   fullTranscription: [
     {
-      text: " So you helped your girlfriend with a presentation and found out she thinks you're out of her league?",
+      text: " So, you know how I agreed to babysit for New Year's Eve?",
       start: 0,
-      end: 4.159999847412109,
-      speaker: "Buddy",
+      end: 2.799999952316284,
+      speaker: "Snarky Sister",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-0.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-0.mp3",
     },
     {
-      text: " Yeah, I stumbled on a chat with her sister.",
-      start: 0,
-      end: 2.0399999618530273,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-1.mp3",
-    },
-    {
-      text: " Let's just say my ego took a nosedive.",
-      start: 2.0399999618530273,
-      end: 4.199999809265137,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-1.mp3",
-    },
-    {
-      text: " Ouch! What else did the sister say? She better not be dissing your fine culinary skills.",
-      start: 0,
-      end: 5.28000020980835,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-2.mp3",
-    },
-    {
-      text: " She called me unambitious, said I eat like crap, and",
-      start: 0,
-      end: 3.1600000858306885,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-3.mp3",
-    },
-    {
-      text: " wouldn't want kids with me, what?",
-      start: 3.1600000858306885,
-      end: 5.360000133514404,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-3.mp3",
-    },
-    {
-      text: " Rude.",
-      start: 0,
-      end: 1,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-4.mp3",
-    },
-    {
-      text: " But wait, isn't that just her inner drama queen talking?",
-      start: 1,
-      end: 3.5,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-4.mp3",
-    },
-    {
-      text: " Right? And I'm keeping her happy. She even prefers 12-hour flights to visit a guy friend",
-      start: 0,
-      end: 5.679999828338623,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-5.mp3",
-    },
-    {
-      text: " instead of a quick hour to see me.",
-      start: 5.679999828338623,
-      end: 7.599999904632568,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-5.mp3",
-    },
-    {
-      text: " So she'll fly across the country but won't travel an hour to get some quality time.",
-      start: 0,
-      end: 4.440000057220459,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-6.mp3",
-    },
-    {
-      text: " Sounds like she's on a one-way flight to La La Land.",
-      start: 4.440000057220459,
-      end: 7.079999923706055,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-6.mp3",
-    },
-    {
-      text: " Exactly! And she thinks I won't make enough money? I mean, I'll make decent cash as a doctor.",
-      start: 0,
-      end: 5.28000020980835,
-      speaker: "Dude",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-7.mp3",
-    },
-    {
-      text: " Sounds like she's got some serious league issues.",
+      text: " Yeah, you're a hero for watching my kids.",
       start: 0,
       end: 2.640000104904175,
-      speaker: "Buddy",
+      speaker: "Clueless Brother",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-8.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-1.mp3",
     },
     {
-      text: " Dude, this is a sign. Time to break up.",
-      start: 2.640000104904175,
-      end: 4.960000038146973,
-      speaker: "Buddy",
-      s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-8.mp3",
-    },
-    {
-      text: " You think? I'm worried I'm overlooking things.",
+      text: " Hero? More like babysitting Cinderella at a disrespect ball.",
       start: 0,
-      end: 3.200000047683716,
-      speaker: "Dude",
+      end: 3.359999895095825,
+      speaker: "Snarky Sister",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-9.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-2.mp3",
     },
     {
-      text: " Look, would you want that kind of teammate in life?",
+      text: " Come on, it was just one night.",
       start: 0,
-      end: 3.2799999713897705,
-      speaker: "Buddy",
+      end: 2,
+      speaker: "Clueless Brother",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-3.mp3",
     },
     {
-      text: " Nope!",
-      start: 3.2799999713897705,
-      end: 4.28000020980835,
-      speaker: "Buddy",
+      text: " One night, it turned into a toddler sleepover from hell.",
+      start: 0,
+      end: 3.880000114440918,
+      speaker: "Snarky Sister",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-4.mp3",
     },
     {
-      text: " Time to score a better match!",
-      start: 4.28000020980835,
-      end: 5.28000020980835,
-      speaker: "Buddy",
+      text: " But I paid you double! That's a bonus!",
+      start: 0,
+      end: 2,
+      speaker: "Clueless Brother",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-10.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-5.mp3",
     },
     {
-      text: " Alright, I'm convinced. It's a foul play on her side.",
+      text: " Yeah, but I still missed the countdown.",
+      start: 0,
+      end: 2,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-6.mp3",
+    },
+    {
+      text: " I could have been sipping champagne, not toddler tears.",
+      start: 2,
+      end: 4.800000190734863,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-6.mp3",
+    },
+    {
+      text: " What's the big deal? My kids love you.",
+      start: 0,
+      end: 2.4000000953674316,
+      speaker: "Clueless Brother",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-7.mp3",
+    },
+    {
+      text: " They love me more when I'm not stuck babysitting on New Year's.",
+      start: 0,
+      end: 2.7200000286102295,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-8.mp3",
+    },
+    {
+      text: " I'm done!",
+      start: 2.7200000286102295,
+      end: 3.5199999809265137,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-8.mp3",
+    },
+    {
+      text: " You're being too tough. Family helps family.",
       start: 0,
       end: 3,
-      speaker: "Dude",
+      speaker: "Clueless Brother",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-11.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-9.mp3",
     },
     {
-      text: " Game on. Don't let anyone make you feel less than a champ.",
+      text: " Family listens to plans, too.",
       start: 0,
-      end: 3.2799999713897705,
-      speaker: "Buddy",
+      end: 1.6399999856948853,
+      speaker: "Snarky Sister",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-12.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-10.mp3",
     },
     {
-      text: " Subscribe for more funny chats.",
+      text: " Next time, I'm out.",
+      start: 1.6399999856948853,
+      end: 3.8399999141693115,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-10.mp3",
+    },
+    {
+      text: " But what if I can't find anyone?",
+      start: 0,
+      end: 2,
+      speaker: "Clueless Brother",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-11.mp3",
+    },
+    {
+      text: " Then you better start training those kids for a babysitting gig!",
+      start: 0,
+      end: 3,
+      speaker: "Snarky Sister",
+      s3URL:
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-12.mp3",
+    },
+    {
+      text: " Subscribe for more chats.",
       start: 0,
       end: 2,
       speaker: "Narrator",
       s3URL:
-        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-8dca3834-bd7b-47f6-b0ce-9a6a2e87631c-13.mp3",
+        "https://podcastsb.s3.amazonaws.com/generated-audio/temp-audio-ad2c90fd-fc8d-4875-b29b-37407598b028-13.mp3",
     },
   ],
 };
-
 const REDDIT_STORY_TEST_DATA = {
   message: "Successfully generated short",
   url: "https://podcastsb.s3.amazonaws.com/generated-clips/dd656784-0474-47c7-ba2d-d6d78268b803.mp4",
 };
 
-const IS_TESTING = false;
+const IS_TESTING = true;
 
 export const generateConversation = async (
   prevState: FormState,
@@ -293,7 +252,7 @@ export const generateConfession = async (
   prevState: FormState,
   formData: FormData
 ) => {
-  const { text, voiceId } = Object.fromEntries(formData.entries());
+  const { text, voiceId, isVerbatim } = Object.fromEntries(formData.entries());
 
   try {
     if (!IS_TESTING) {
@@ -304,6 +263,7 @@ export const generateConfession = async (
           voiceId,
           bgVideo: getRandomBackgroundVideo(),
           bgSound: getRandomBackgroundSong(),
+          isVerbatim,
         }),
 
         headers: { "Content-Type": "application/json" },
