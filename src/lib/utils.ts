@@ -1,5 +1,5 @@
-const BG_COUNT = 12;
-const SONG_COUNT = 4;
+const BG_COUNT = 1;
+const SONG_COUNT = 1;
 
 export const getSecondSpeaker = (conversation: any) => {
   const uniqueSpeakers = new Set(); // To store unique speakers
